@@ -9,13 +9,13 @@ public class Main {
         MetricCalculator calculator = new MetricCalculator();
         char currentopperator = '+';
 
-        while (true){
+        while (true) {
             double value = calculator.readValue(scanner);
             String unit = calculator.getUnit(scanner);
             double result = calculator.calculator(currentopperator, value, unit);
 
             char opperator = calculator.getOperator(scanner);
-            if (opperator == '='){
+            if (opperator == '=') {
                 break;
             }
 
@@ -23,7 +23,7 @@ public class Main {
 
         }
 
-        System.out.println("The result is: "+calculator.getResult()+" mm");
+        System.out.println("The result is: " + calculator.getResult() + " mm");
 
 
     }

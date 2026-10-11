@@ -64,25 +64,31 @@ public class MetricCalculator {
 
     }
 
-    public double switchTomm (double value, String unit){
-        switch (unit.toLowerCase().trim()){
-            case "mm" : return value * 1;
-            case "cm" : return value * 10;
-            case "dm" : return value * 100;
-            case "m" : return value * 1000;
-            case "km" : return value * 1000000;
-            default: throw new IllegalArgumentException("Invalid unit!");
+    public double switchTomm(double value, String unit) {
+        switch (unit.toLowerCase().trim()) {
+            case "mm":
+                return value * 1;
+            case "cm":
+                return value * 10;
+            case "dm":
+                return value * 100;
+            case "m":
+                return value * 1000;
+            case "km":
+                return value * 1000000;
+            default:
+                throw new IllegalArgumentException("Invalid unit!");
 
 
         }
     }
 
-    public double getResult(){
+    public double getResult() {
 
         return this.resultInmm;
     }
 
-    public void reset(){
+    public void reset() {
 
         this.resultInmm = 0;
     }

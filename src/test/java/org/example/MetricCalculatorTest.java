@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.Arguments;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -23,16 +24,17 @@ class MetricCalculatorTest {
     @Test
     public void calculator() {
         //when
-        double addition = calculator.calculator('+',20,"cm");
-        double substraction = calculator.calculator('-',10,"mm");
+        double addition = calculator.calculator('+', 20, "cm");
+        double substraction = calculator.calculator('-', 10, "mm");
 
         //then
         assertEquals(200, addition);
         assertEquals(190, substraction);
 
     }
+
     @Test
-    public void invalidoperator(){
+    public void invalidoperator() {
 
         assertThrows(IllegalArgumentException.class, () -> {
             calculator.calculator('/', 100, "m");
@@ -54,7 +56,7 @@ class MetricCalculatorTest {
         String unit = calculator.getUnit(new Scanner("cm"));
 
         //then
-        assertEquals("cm",unit);
+        assertEquals("cm", unit);
     }
 
     @Test
@@ -63,7 +65,7 @@ class MetricCalculatorTest {
         char operator = calculator.getOperator(new Scanner("+"));
 
         //then
-        assertEquals('+',operator);
+        assertEquals('+', operator);
     }
 
     @ParameterizedTest
@@ -74,34 +76,35 @@ class MetricCalculatorTest {
         //then
         assertEquals(expetedResult, result);
     }
-    private static Stream<Arguments> dataProvider(){
+
+    private static Stream<Arguments> dataProvider() {
         return Stream.of(
-                Arguments.of(1,"mm", 1),
-                Arguments.of(1,"cm", 10),
-                Arguments.of(1,"dm", 100),
-                Arguments.of(1,"m", 1000),
-                Arguments.of(1,"km", 1000000));
+                Arguments.of(1, "mm", 1),
+                Arguments.of(1, "cm", 10),
+                Arguments.of(1, "dm", 100),
+                Arguments.of(1, "m", 1000),
+                Arguments.of(1, "km", 1000000));
     }
 
     @Test
     void getResult() {
         //given
-        calculator.calculator('+',5,"m");
+        calculator.calculator('+', 5, "m");
         //when
         double result = calculator.getResult();
         //then
-        assertEquals(5000.0,result);
+        assertEquals(5000.0, result);
     }
 
     @Test
     void reset() {
         //given
-        calculator.calculator('+',10,"mm");
+        calculator.calculator('+', 10, "mm");
         //when
         calculator.reset();
         double resetedResult = calculator.getResult();
         //then
-        assertEquals(0.0,resetedResult);
+        assertEquals(0.0, resetedResult);
 
     }
 }
